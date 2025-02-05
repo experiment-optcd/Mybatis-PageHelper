@@ -1,19 +1,18 @@
-
 name: Modified Maven verify
 jobs:
   mvn_verify:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Maven Central Repository
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'
-        distribution: adopt
-    - name: Run the Maven verify phase
-      run: mvn --batch-mode --update-snapshots -P dev verify -Dsurefire.useFile=false
-        -DdisableXmlReport=true
+      - uses: actions/checkout@v3
+      - name: Set up Maven Central Repository
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: adopt
+      - name: Run the Maven verify phase
+        run: mvn --batch-mode --update-snapshots -P dev verify -Dsurefire.useFile=false
+          -DdisableXmlReport=true
     name: mvn_verify
 'on':
-- push
-- workflow_dispatch
+  - push
+  - workflow_dispatch
